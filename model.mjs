@@ -26,20 +26,20 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCBvHiVeINZCdd08OJjK7cmNMc7pgqrezI",
-  authDomain: "auth-49527.firebaseapp.com",
-  databaseURL: "https://auth-49527-default-rtdb.firebaseio.com",
-  projectId: "auth-49527",
-  storageBucket: "auth-49527.appspot.com",
-  messagingSenderId: "399703751110",
-  appId: "1:399703751110:web:8811a028d8f624e8e29ac7",
+  apiKey: "AIzaSyBb38dIHTI66XZmHYhRHAokDZJYsMIWWCA",
+  authDomain: "expenseshare-ca3e7.firebaseapp.com",
+  databaseURL: "https://expenseshare-ca3e7-default-rtdb.firebaseio.com",
+  projectId: "expenseshare-ca3e7",
+  storageBucket: "expenseshare-ca3e7.appspot.com",
+  messagingSenderId: "945129107854",
+  appId: "1:945129107854:web:6ead4fb60fced51dc8b4df",
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const auth = getAuth(app);
 
-window.addEventListener("change", function () {
+window.addEventListener("popstate", function () {
   if (
     !window.localStorage.getItem("state") &&
     window.location.pathname !== "/"
