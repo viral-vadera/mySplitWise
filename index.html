@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Authentication</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-background">
+      <div class="app-container">
+        <div class="login-contianer">
+          <div class="login-card">
+            <div class="login-heading">
+              <a href="/index.html">
+                <h1>My Split Wise</h1>
+              </a>
+            </div>
+            <div class="login-form">
+              <label for="user-name">Username :</label>
+              <input type="text" id="user-name" placeholder="abc@example.com" />
+              <div class="tooltip tooltip-user hidden">
+                <pre class="tooltip-txt-user"></pre>
+              </div>
+              <label for="password">password :</label>
+              <input type="password" id="password" />
+              <div class="tooltip tooltip-pass hidden">
+                <pre class="tooltip-txt">
+    Password should have 
+    1. minimum 8 characters. 
+    2. symbols{!@#$%^&*} should be used. 
+    3. numbers, small and capital letters are allowed</pre
+                >
+              </div>
+              <div class="login-btns">
+                <a href="/home.html" class="login">Login</a>
+
+                <a href="/signup.html" class="signup">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="loader hidden"></div>
+    <div class="overlay hidden"></div>
+    <script type="module" src="./controller.mjs" defer></script>
+  </body>
+</html>

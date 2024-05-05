@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>signup</title>
+  </head>
+  <body>
+    <div class="app-background">
+      <div class="app-container">
+        <div class="signup-container">
+          <div class="signup-card">
+            <div class="signup-heading">
+              <h1>Welcome to SplitWise</h1>
+            </div>
+            <div class="signup-form">
+              <form id="signupform" action="/pages/verifyemail.html">
+                <label for="name">Full name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  placeholder="sherlock holmes"
+                />
+                <label for="mobile">Mobile</label>
+                <input
+                  type="tel"
+                  id="mobile"
+                  required
+                  maxlength="10"
+                  placeholder="xxxxxxxxxx"
+                />
+                <label for="email">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  placeholder="abc@example.com"
+                />
+                <label for="set-password" required>Password:</label>
+                <input
+                  type="password"
+                  id="set-password"
+                  minlength="8"
+                  required
+                />
+                <div class="tooltip hidden">
+                  <pre class="tooltip-txt">
+      Password should have 
+      1. minimum 8 characters. 
+      2. symbols{!@#$%^&*} should be used. 
+      3. numbers, small and capital letters are allowed</pre
+                  >
+                </div>
+                <button type="submit" class="signup-btn">SignUp</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./signupController.mjs" defer></script>
+  </body>
+</html>

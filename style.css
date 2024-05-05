@@ -1,0 +1,794 @@
+:root {
+  font-size: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.app-background {
+  height: 100%;
+  width: 100%;
+  background-image: url(./assets/images/paisa-bg.png);
+  z-index: -1;
+}
+.app-container {
+  height: 100%;
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* use anywhere we want to hide stuff and laod other things */
+.hidden {
+  display: none;
+}
+
+/* login page styles  */
+
+.login-card {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid black;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.login-heading {
+  font-size: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.5rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.login-form input {
+  height: 2rem;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.tooltip pre {
+  display: block;
+  font-size: 0.8rem;
+  border-radius: 2px;
+  padding: 0.2rem;
+  background-color: black;
+  color: white;
+  left: 1rem;
+  z-index: 1;
+  position: absolute;
+  left: auto;
+  top: auto;
+}
+
+/* .tooltip {
+    display: block;
+    font-size: 0.8rem;
+    border-radius: 2px;
+    padding: 0.5;
+    background-color: black;
+    color: white;
+    z-index: 1;
+    position: absolute;
+    width: 10rem;
+    padding: 1rem;
+    left: 61%;
+    top: 51%;
+  } */
+
+.login-form label {
+  display: inline-flex;
+}
+
+.login-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+}
+
+.login-btns button {
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+}
+
+.login-btns a {
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  border: 2px solid black;
+  text-align: center;
+}
+
+.login-btns a:hover {
+  background-color: black;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+/* 
+  .login-btns button:hover {
+    background-color: black;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+  } */
+
+/* login page styles end  */
+
+/* sign up page styles  */
+
+.signup-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.signup-heading {
+  font-size: 2rem;
+}
+
+.signup-form {
+  width: 100%;
+}
+.signup-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.signup-form form input {
+  width: 100%;
+  height: 2rem;
+  border-radius: 3px;
+}
+
+/* .signup-btn button {
+    width: 100%;
+    padding: 0.5rem 0rem;
+    font-size: 1.5rem;
+    background-color: white;
+    color: black;
+    border-radius: 3px;
+  } */
+.signup-btn {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem 0rem;
+  font-size: 1.5rem;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  border: 2px solid black;
+}
+
+.signup-btn:hover {
+  background-color: black;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.email-verifycard {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid black;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.email-verifycard h2 {
+  font-size: 2rem;
+}
+
+.email-verifycard a {
+  margin-top: 1rem;
+  width: 20%;
+  padding: 0.25rem 0rem;
+  font-size: 1.15rem;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  border: 2px solid black;
+}
+
+.email-verifycard a:hover {
+  background-color: black;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+/* home page styles start here */
+
+/* home page heading section */
+.home-page {
+  height: auto;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.home-page .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border: 2px solid black;
+  margin: 0.5rem;
+}
+
+.logo a {
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+}
+
+.user-acc {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.img-acc-dp img {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+.user-acc-name {
+  font-size: 1.5rem;
+}
+
+.body-home {
+  border: 2px solid black;
+  margin: 0.5rem;
+  height: auto;
+  display: flex;
+}
+
+.sign-out-btn a {
+  padding: 0.35rem;
+  border: 0.5px solid black;
+  background-color: white;
+}
+
+.sign-out-btn a:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-weight: bold;
+}
+/* home page heading section over */
+
+/* home page side section */
+.side-section {
+  width: 30%;
+  border: 1px solid black;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.side-section .views {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.grp-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  background-color: #77777778;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
+
+.grp-add a {
+  text-decoration: none;
+  color: black;
+}
+
+.grp-names {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+.frnd-heading {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  background-color: #77777778;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
+
+.frnd-add a {
+  text-decoration: none;
+  color: black;
+}
+
+.frnd-names {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+/* home page side section over */
+
+/* home page main display section */
+
+.main-section {
+  border: 1px solid black;
+  width: 70%;
+  margin: 0.5rem;
+  margin-left: 0;
+  padding: 0.5rem;
+  box-shadow: 2px 2px 3px 0px rgba(92, 90, 92, 1);
+}
+
+/* display dashboard sytles */
+.dashboard {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* dashboard heading section */
+
+.dashboard-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* dashboard - add expense section  */
+
+.add-expense-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.add-expense-section button {
+  padding: 0.35rem;
+  border: 0.5px solid black;
+  background-color: white;
+}
+
+.add-expense-section button:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-weight: bold;
+}
+
+/* dashboard - balance section */
+.balance-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.9rem;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.474);
+}
+
+.balances {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* dashboard styles complete */
+
+/* recent activity styles begin */
+.recent-activity {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recent-activity-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.recent-activity-entries {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  /* gap: 0.5rem; */
+}
+
+.entry-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid black;
+}
+
+/* all expensese rendering */
+.all-expenses {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.all-expenses-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.monthly-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.monthly-entries .month-heading {
+  background-color: #77777778;
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+.month-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.entry {
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.entry-info {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.entry-info .date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.entry-info .entry-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.entry-info .entry-desc #desc {
+  font-weight: 600;
+}
+
+.entry-info .entry-desc #desc:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.entry-info .entry-desc #entry-grpname {
+  background-color: #77777778;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.entry-balance {
+  display: flex;
+  flex-direction: row;
+  gap: 0.9rem;
+  font-size: 0.8rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.entry-balance .who-paid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-end;
+}
+
+.entry-balance .who-lent-who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-start;
+}
+
+.entry .entry-delete {
+  font-size: 1.1rem;
+}
+
+.entry .entry-delete:hover {
+  color: red;
+}
+
+/* all expenses - add expense section  */
+.add-expense-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.add-expense-section button {
+  padding: 0.35rem;
+  border: 0.5px solid black;
+  background-color: white;
+}
+
+.add-expense-section button:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-weight: bold;
+}
+
+/* add expense modal styles */
+.expense-modal {
+  position: absolute;
+  width: 50%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.modal-heading {
+  border: 1px solid black;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.1rem 1rem;
+}
+
+.modal-heading span:hover {
+  color: red;
+}
+.modal-details {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  font-size: 1.2rem;
+}
+
+.confirm-modal {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.confirm-modal button {
+  padding: 0.35rem;
+  background-color: rgba(255, 255, 255);
+  border: 2px solid black;
+}
+
+.confirm-modal button:hover {
+  background-color: black;
+  color: white;
+}
+
+/* add grp modal styles */
+
+.modal-add-grp {
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
+  gap: 1rem;
+  align-items: flex-start;
+  z-index: 10;
+}
+.close-grp-modal span:hover {
+  color: red;
+}
+.modal-grp-head {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.modal-grp-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.modal-grp-heading h2 {
+  font-size: 1.75rem;
+}
+
+.modal-grp-heading input {
+  height: 2rem;
+  font-size: 1.5rem;
+}
+.close-grp-modal {
+  justify-self: right;
+}
+
+.modal-grp-heading span {
+  font-size: 1rem;
+  /* background-color: #77777778; */
+  padding: 0.25rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: bolder;
+}
+
+#members-heading {
+  font-size: 1rem;
+  /* background-color: #77777778; */
+  padding: 0.25rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: bolder;
+}
+.grp-modal-members {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.add-members {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.member {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.member input {
+  height: 1.65rem;
+}
+.member input::placeholder {
+  color: #77777778;
+  padding: 0.25rem;
+}
+
+.member span:hover {
+  color: red;
+}
+.grp-confirm button {
+  padding: 0.5rem 0.5rem;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.grp-confirm button:hover {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  backdrop-filter: blur(1px);
+}
+
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #404345; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  left: 48.5%;
+  top: 50%;
+  position: absolute;
+  z-index: 6;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>home</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="app-background">
+      <div class="app-container">
+        <div class="home-page">
+          <div class="header">
+            <div class="logo">
+              <a href="#">MySplitWise</a>
+            </div>
+            <div class="user-acc">
+              <div class="img-acc-dp">
+                <a href="#useracc">
+                  <img src="./assets/images/money_money.jpg" alt="sample" />
+                </a>
+              </div>
+              <div class="user-acc-name">
+                <a href="#useracc">User Name</a>
+              </div>
+              <div class="sign-out-btn">
+                <a href="">Sign Out</a>
+              </div>
+            </div>
+          </div>
+          <div class="body-home">
+            <div class="side-section">
+              <div class="views">
+                <a href="#showdashboardinmainsection"><span>Dashboard</span></a>
+                <a href=""><span>Recent activity</span></a>
+                <a href=""><span>All expenses</span></a>
+              </div>
+              <div class="groups">
+                <div class="grp-heading">
+                  <span>Groups</span>
+                  <span class="grp-add"
+                    ><a href="#opengroupaddmodal"> + add </a></span
+                  >
+                </div>
+                <div class="grp-names">
+                  <p><a href="#group-expenses-in-main-area">abc</a></p>
+                  <p><a href="#group-expenses-in-main-area">abc</a></p>
+                  <p><a href="#group-expenses-in-main-area">abc</a></p>
+                </div>
+                <!-- inject group here -->
+              </div>
+              <div class="friends">
+                <div class="frnd-heading">
+                  <span>Friends</span>
+                  <span class="frnd-add"
+                    ><a href="#openfrndaddmodal"> + add </a></span
+                  >
+                </div>
+                <div class="frnd-names">
+                  <p><a href="#frnd-expenses-in-main-area">frnd</a></p>
+                  <p><a href="#frnd-expenses-in-main-area">frnd</a></p>
+                  <p><a href="#frnd-expenses-in-main-area">frnd</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="main-section">
+              <!-- dashboard -->
+              <div class="dashboard">
+                <div class="dashboard-heading">
+                  <span>Dashboard</span>
+                  <div class="add-expense-section">
+                    <button id="add-expense">Add an expense</button>
+                    <button id="settle-expenses">Settle up</button>
+                  </div>
+                </div>
+                <div class="balance-section">
+                  <!-- total balance you owe and  you are owed -->
+                  <div class="total-balance balances">
+                    <span>total balance</span>
+                    <span>-$1000</span>
+                  </div>
+                  <div class="you-owe balances">
+                    <span>you owe</span>
+                    <span>-$1000</span>
+                  </div>
+                  <div class="you-are-owed balances">
+                    <span>you are owed</span>
+                    <span>-$1000</span>
+                  </div>
+                </div>
+              </div>
+              <!-- recent activity -->
+              <div class="recent-activity">
+                <div class="recent-activity-heading">Recent activity</div>
+                <div class="recent-activity-entries">
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+
+                  <div class="entry-container">
+                    <div class="entry-date">
+                      <span>date</span>
+                    </div>
+                    <div class="entry-info">
+                      <p class="entry-message">
+                        you/someone added "entry description" in 'grpname'
+                      </p>
+                      <p>entry balance</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- all expenses -->
+              <div class="all-expenses">
+                <div class="all-expenses-heading">
+                  <span>All Expenses</span>
+                  <div class="add-expense-section">
+                    <button id="add-expense">Add an expense</button>
+                    <button id="settle-expenses">Settle up</button>
+                  </div>
+                </div>
+                <div class="monthly-entries">
+                  <div class="month-heading">
+                    <span>APRIL 2024</span>
+                  </div>
+                  <div class="month-entries">
+                    <div class="entry">
+                      <div class="entry-info">
+                        <div class="date">
+                          <span>APR</span>
+                          <span>12</span>
+                        </div>
+                        <div class="entry-desc">
+                          <span id="desc">milk</span>
+                          <span id="entry-grpname">group</span>
+                        </div>
+                      </div>
+                      <div class="entry-balance">
+                        <div class="who-paid">
+                          <span>you paid </span>
+                          <span>300</span>
+                        </div>
+                        <div class="who-lent-who">
+                          <span>you lent</span>
+                          <span>500</span>
+                        </div>
+                        <div class="entry-delete">
+                          <span>&#10006;</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="entry">
+                      <div class="entry-info">
+                        <div class="date">
+                          <span>APR</span>
+                          <span>12</span>
+                        </div>
+                        <div class="entry-desc">
+                          <span id="desc">milk</span>
+                          <span id="entry-grpname">group</span>
+                        </div>
+                      </div>
+                      <div class="entry-balance">
+                        <div class="who-paid">
+                          <span>you paid </span>
+                          <span>300</span>
+                        </div>
+                        <div class="who-lent-who">
+                          <span>you lent</span>
+                          <span>500</span>
+                        </div>
+                        <div class="entry-delete">
+                          <span>&#10006;</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="entry entry-clr">
+                      <div class="entry-info">
+                        <div class="date">
+                          <span>APR</span>
+                          <span>12</span>
+                        </div>
+                        <div class="entry-desc">
+                          <span id="desc">who paid how much to you</span>
+                        </div>
+                      </div>
+                      <div class="entry-balance">
+                        <div class="who-paid">
+                          <span>you get</span>
+                        </div>
+                        <div class="who-lent-who">
+                          <span>500</span>
+                        </div>
+                        <div class="entry-delete">
+                          <span>&#10006;</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="monthly-entries">
+                  <div class="month-heading">
+                    <span>APRIL 2024</span>
+                  </div>
+                  <div class="month-entries">
+                    <div class="entry">
+                      <div class="entry-info">
+                        <div class="date">
+                          <span>APR</span>
+                          <span>12</span>
+                        </div>
+                        <div class="entry-desc">
+                          <span id="desc">milk</span>
+                          <span id="entry-grpname">group</span>
+                        </div>
+                      </div>
+                      <div class="entry-balance">
+                        <div class="who-paid">
+                          <span>you paid </span>
+                          <span>300</span>
+                        </div>
+                        <div class="who-lent-who">
+                          <span>you lent</span>
+                          <span>500</span>
+                        </div>
+                        <div class="entry-delete">
+                          <span>&#10006;</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="entry">
+                      <div class="entry-info">
+                        <div class="date">
+                          <span>APR</span>
+                          <span>12</span>
+                        </div>
+                        <div class="entry-desc">
+                          <span id="desc">milk</span>
+                          <span id="entry-grpname">group</span>
+                        </div>
+                      </div>
+                      <div class="entry-balance">
+                        <div class="who-paid">
+                          <span>you paid </span>
+                          <span>300</span>
+                        </div>
+                        <div class="who-lent-who">
+                          <span>you lent</span>
+                          <span>500</span>
+                        </div>
+                        <div class="entry-delete">
+                          <span>&#10006;</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="monthly-entries">
+                  <div class="month-heading">
+                    <span>APRIL 2024</span>
+                  </div>
+                  <div class="month-entries">
+                    <div class="entry">
+                      <div class="entry-info">
+                        <div class="date">
+                          <span>APR</span>
+                          <span>12</span>
+                        </div>
+                        <div class="entry-desc">
+                          <span id="desc">milk</span>
+                          <span id="entry-grpname">group</span>
+                        </div>
+                      </div>
+                      <div class="entry-balance">
+                        <div class="who-paid">
+                          <span>you paid </span>
+                          <span>300</span>
+                        </div>
+                        <div class="who-lent-who">
+                          <span>you lent</span>
+                          <span>500</span>
+                        </div>
+                        <div class="entry-delete">
+                          <span>&#10006;</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="entry">
+                      <div class="entry-info">
+                        <div class="date">
+                          <span>APR</span>
+                          <span>12</span>
+                        </div>
+                        <div class="entry-desc">
+                          <span id="desc">milk</span>
+                          <span id="entry-grpname">group</span>
+                        </div>
+                      </div>
+                      <div class="entry-balance">
+                        <div class="who-paid">
+                          <span>you paid </span>
+                          <span>300</span>
+                        </div>
+                        <div class="who-lent-who">
+                          <span>you lent</span>
+                          <span>500</span>
+                        </div>
+                        <div class="entry-delete">
+                          <span>&#10006;</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-container hidden">
+          <div class="expense-modal">
+            <div class="modal-heading">
+              <h2>Add an expense</h2>
+              <span>&#10006;</span>
+            </div>
+            <div class="modal-details">
+              <span>With you and: </span>
+              <input type="text" id="split-with-list" />
+            </div>
+            <div class="confirm-modal">
+              <button>cancel</button>
+              <button>save</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grp-mdl-container hidden">
+          <div class="modal-add-grp">
+            <div class="modal-grp-head">
+              <div class="modal-grp-heading">
+                <span>START A NEW GROUP</span>
+                <h2>My group is called...</h2>
+                <input type="text" />
+              </div>
+
+              <div class="close-grp-modal">
+                <span>&#10006;</span>
+              </div>
+            </div>
+
+            <div class="grp-modal-members">
+              <span id="members-heading">GROUP MEMBERS</span>
+              <div class="creator">
+                <span>name</span>
+                <span>(emailId@example.com)</span>
+              </div>
+              <div class="add-members">
+                <div class="member">
+                  <input type="text" placeholder="Name" />
+                  <input type="email" placeholder="email@example.com" />
+                  <span>&#10006;</span>
+                </div>
+                <div class="member">
+                  <input type="text" placeholder="Name" />
+                  <input type="email" placeholder="email@example.com" />
+                  <span>&#10006;</span>
+                </div>
+                <div class="member">
+                  <input type="text" placeholder="Name" />
+                  <input type="email" placeholder="email@example.com" />
+                  <span>&#10006;</span>
+                </div>
+                <div class="member">
+                  <input type="text" placeholder="Name" />
+                  <input type="email" placeholder="email@example.com" />
+                  <span>&#10006;</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grp-confirm">
+              <button>Save</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- overlay html code -->
+        <div class="overlay" hidden></div>
+      </div>
+    </div>
+    <script type="module" src="./homeController.mjs"></script>
+  </body>
+</html>
