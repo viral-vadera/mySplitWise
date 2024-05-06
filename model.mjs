@@ -12,6 +12,7 @@ import {
   onValue,
   remove,
   update,
+  push,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
 
 import {
@@ -23,6 +24,7 @@ import {
   browserLocalPersistence,
   signInWithEmailAndPassword,
   sendEmailVerification,
+  updateEmail,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -40,7 +42,6 @@ const db = getDatabase();
 const auth = getAuth(app);
 
 window.addEventListener("focusin", function () {
-  console.log(window.location.pathname !== "/signup.html");
   if (
     window.location.pathname !== "/signup.html" &&
     !window.localStorage.getItem("state") &&
@@ -78,7 +79,6 @@ const checkIfUser = async function (email) {
     if (snapshot.exists()) {
       snapshot.forEach((child) => {
         let mail = child.val().Email;
-        console.log(typeof email, typeof mail);
         if (mail == email) {
           user = `isUser`;
           return user;
@@ -171,6 +171,19 @@ const getPassword = async function (uid) {
     });
   return pass;
 };
+
+const updateemail = function (newEmail) {
+  updateEmail(auth.currentUser, newEmail)
+    .then(console.log(`email updated`))
+    .catch((err) => {
+      console.log(err);
+    });
+};
+// updateemail("viralvudera@gmail.com");
+
+//update password
+
+//profile
 
 // basic get set retrieve and remove methods
 async function setData(path, object) {

@@ -293,6 +293,31 @@ body {
   font-size: 1.5rem;
 }
 
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.user-dropdown-content {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 6;
+  border: 1px solid black;
+}
+
+.user-dropdown-content a {
+  color: black;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.user-dropdown-content a:hover {
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
 .body-home {
   border: 2px solid black;
   margin: 0.5rem;
@@ -300,17 +325,6 @@ body {
   display: flex;
 }
 
-.sign-out-btn a {
-  padding: 0.35rem;
-  border: 0.5px solid black;
-  background-color: white;
-}
-
-.sign-out-btn a:hover {
-  background-color: rgb(0, 0, 0);
-  color: white;
-  font-weight: bold;
-}
 /* home page heading section over */
 
 /* home page side section */
@@ -758,6 +772,117 @@ body {
   background-color: black;
   color: white;
   font-weight: bold;
+}
+
+.profile-modal {
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  gap: 1rem;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.profile-heading {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 1rem 0 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-profile-modal:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.update-message {
+  background-color: black;
+  color: white;
+  width: 100%;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  border-radius: 1px;
+  padding: 0.1rem;
+}
+.profile-update {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.user-name-edit {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-email-edit {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-mobile-edit {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-pass-edit {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  justify-content: left;
+  align-items: center;
+}
+
+.edit-password-slider {
+  padding: 0.1rem;
+}
+.edit-profile-btn {
+  background-color: white;
+  padding: 0 0.25rem;
+  border: 0.5px solid black;
+  border-radius: 3px;
+}
+
+.edit-profile-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.submit-changes {
+  background-color: white;
+  padding: 0 0.25rem;
+  border: 0.5px solid black;
+  border-radius: 3px;
+}
+
+.submit-changes:hover {
+  background-color: black;
+  color: white;
 }
 
 .overlay {

@@ -27,10 +27,12 @@
                 </a>
               </div>
               <div class="user-acc-name">
-                <a href="#useracc">User Name</a>
-              </div>
-              <div class="sign-out-btn">
-                <a href="">Sign Out</a>
+                <a href="" class="user-dropdown">User Name</a>
+                <div class="user-dropdown-content hidden">
+                  <a href="" class="profile">Profile</a>
+                  <a href="" class="sign-out-btn">signout</a>
+                  <!-- <a href=""></a> -->
+                </div>
               </div>
             </div>
           </div>
@@ -619,8 +621,84 @@
           </div>
         </div>
 
+        <div class="profile-modal-container hidden">
+          <div class="profile-modal">
+            <div class="profile-heading">
+              <div class="profile-heading-text"><h2>User Name</h2></div>
+              <div class="close-profile-modal"><p>&#10006;</p></div>
+            </div>
+            <div class="update-message hidden">
+              <p class="profile-message">update messages.</p>
+            </div>
+            <div class="profile-update">
+              <div class="user-name-edit">
+                <label for="edit-user-name">Name</label>
+                <input type="text" id="edit-user-name" disabled />
+                <button class="edit-profile-btn edit-username-btn">
+                  &#x270E;
+                </button>
+                <button class="submit-changes submit-username-btn">
+                  &#10004;
+                </button>
+              </div>
+
+              <div class="user-email-edit">
+                <label for="edit-user-email">Email</label>
+                <input type="email" id="edit-user-email" disabled />
+                <button class="edit-profile-btn edit-email-btn">
+                  &#x270E;
+                </button>
+                <button class="submit-changes submit-email-button">
+                  &#10004;
+                </button>
+              </div>
+
+              <div class="user-mobile-edit">
+                <label for="edit-user-mobile">Mobile</label>
+                <input type="tel" id="edit-user-mobile" disabled />
+                <button class="edit-profile-btn edit-mobile-btn">
+                  &#x270E;
+                </button>
+                <button class="submit-changes submit-mobile-btn">
+                  &#10004;
+                </button>
+              </div>
+
+              <div class="user-pass-edit">
+                <p>Password</p>
+                <button class="edit-profile-btn edit-pass-btn">&#x270E;</button>
+                <button class="submit-changes submit-pass-btn">&#10004;</button>
+              </div>
+              <div class="edit-password-slider hidden">
+                <label for="edit-user-password">Old Password</label>
+                <input
+                  type="password"
+                  name=""
+                  id="edit-user-password"
+                /><br /><br />
+                <label for="edit-user-new-password">New Password</label>
+                <input
+                  type="password"
+                  name=""
+                  id="edit-user-new-password"
+                /><br /><br />
+                <label for="edit-user-new-confirmed-password"
+                  >New Password</label
+                >
+                <input
+                  type="password"
+                  name=""
+                  id="edit-user-new-confirmed-password"
+                />
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- overlay html code -->
-        <div class="overlay" hidden></div>
+        <div class="overlay hidden"></div>
       </div>
     </div>
     <script type="module" src="./homeController.mjs"></script>
