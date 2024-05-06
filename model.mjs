@@ -39,8 +39,10 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 const auth = getAuth(app);
 
-window.addEventListener("popstate", function () {
+window.addEventListener("focusin", function () {
+  console.log(window.location.pathname !== "/signup.html");
   if (
+    window.location.pathname !== "/signup.html" &&
     !window.localStorage.getItem("state") &&
     window.location.pathname !== "/"
   ) {
@@ -76,10 +78,13 @@ const checkIfUser = async function (email) {
     if (snapshot.exists()) {
       snapshot.forEach((child) => {
         let mail = child.val().Email;
-        if (mail === email) {
+        console.log(typeof email, typeof mail);
+        if (mail == email) {
           user = `isUser`;
+          return user;
         } else {
           user = `notUser`;
+          return user;
         }
       });
     }
@@ -157,9 +162,13 @@ setPersistence(auth, browserLocalPersistence)
 const getPassword = async function (uid) {
   let holder;
   let pass;
-  holder = await get(child(ref(db), `users/${uid}`)).then((snapshot) => {
-    pass = snapshot.val().Password;
-  });
+  holder = await get(child(ref(db), `users/${uid}`))
+    .then((snapshot) => {
+      pass = snapshot.val().Password;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   return pass;
 };
 
