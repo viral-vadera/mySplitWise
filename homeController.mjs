@@ -1,6 +1,6 @@
 "use strict";
 
-import { userSignout } from "/model.mjs";
+import { userSignout, updateMail } from "/model.mjs";
 
 //selections
 const userDropdown = document.querySelector(".user-dropdown");
@@ -73,47 +73,27 @@ profile.addEventListener("click", function (e) {
     e.preventDefault();
 
     usernameInp.removeAttribute("disabled");
-    submitUsernameBtn.addEventListener(
-      "click",
-      function (e) {
-        e.preventDefault();
-        usernameInp.setAttribute("disabled", "");
-      },
-      { once: true }
-    );
+    submitUsernameBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      usernameInp.setAttribute("disabled", "");
+    });
   });
 
   //editing the email
   editEmailbtn.addEventListener("click", function (e) {
     e.preventDefault();
     emailInp.removeAttribute("disabled");
-    submitEmailBtn.addEventListener(
-      "click",
-      function (e) {
-        updateEmail(emailInp.value).then((data) => {
-          emailInp.setAttribute("disabled", "");
-          if (data === "Email updated") {
-            profileMessageContainer.classList.remove("hidden");
-            profileMessage.textContent = "Emailupdated";
-          } else {
-            profileMessage.textContent = "something went wrong !";
-          }
-        });
-      },
-      { once: true }
-    );
+    submitEmailBtn.addEventListener("click", function (e) {
+      updateMail(emailInp.value);
+    });
   });
   //editing the mobile
   editMobileebtn.addEventListener("click", function (e) {
     e.preventDefault();
     mobileInp.removeAttribute("disabled");
-    submitMobileBtn.addEventListener(
-      "click",
-      function (e) {
-        mobileInp.setAttribute("disabled", "");
-      },
-      { once: true }
-    );
+    submitMobileBtn.addEventListener("click", function (e) {
+      mobileInp.setAttribute("disabled", "");
+    });
   });
   //editing the password
   editPasswordBtn.addEventListener("click", function () {

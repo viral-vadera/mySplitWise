@@ -31,7 +31,7 @@
                 <div class="user-dropdown-content hidden">
                   <a href="" class="profile">Profile</a>
                   <a href="" class="sign-out-btn">signout</a>
-                  <!-- <a href=""></a> -->
+                  <a href="" class="delete-acc">Delete account</a>
                 </div>
               </div>
             </div>
@@ -628,7 +628,7 @@
               <div class="close-profile-modal"><p>&#10006;</p></div>
             </div>
             <div class="update-message hidden">
-              <p class="profile-message">update messages.</p>
+              <p class="profile-message"></p>
             </div>
             <div class="profile-update">
               <div class="user-name-edit">
@@ -697,8 +697,25 @@
           </div>
         </div>
 
+        <div class="credential-modal-container hidden">
+          <div class="credential-modal">
+            <div class="credential-heading">
+              <h2>Enter your credentials here</h2>
+            </div>
+            <div class="credential-form">
+              <div class="pass-cred">
+                <label for="pass-cred">Password:</label>
+                <input type="password" id="pass-cred" />
+              </div>
+
+              <button class="cred-submit">submit</button>
+              <button class="cred-close">close</button>
+            </div>
+          </div>
+        </div>
         <!-- overlay html code -->
         <div class="overlay hidden"></div>
+        <div class="loader hidden"></div>
       </div>
     </div>
     <script type="module" src="./homeController.mjs"></script>

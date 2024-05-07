@@ -25,6 +25,9 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   updateEmail,
+  verifyBeforeUpdateEmail,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -126,19 +129,22 @@ const userSignout = function () {
   signOut(auth).then(() => {
     window.location.pathname = "/";
     window.localStorage.removeItem("state");
-    console.log(auth.currentUser);
   });
 };
 
 const autoLogin = async function () {
   const email = auth.currentUser.email;
-  document.querySelector(".loader").classList.remove("hidden");
-  document.querySelector(".overlay").classList.remove("hidden");
-  getPassword(auth.currentUser.uid).then((password) => {
-    if (password) {
-      userSignInWithEmail(email, password);
-    }
-  });
+  if (auth.currentUser.emailVerified !== true) {
+    alert(`your email is not verified`);
+  } else {
+    document.querySelector(".loader").classList.remove("hidden");
+    document.querySelector(".overlay").classList.remove("hidden");
+    getPassword(auth.currentUser.uid).then((password) => {
+      if (password) {
+        userSignInWithEmail(email, password);
+      }
+    });
+  }
 };
 
 setPersistence(auth, browserLocalPersistence)
@@ -172,15 +178,78 @@ const getPassword = async function (uid) {
   return pass;
 };
 
-const updateemail = function (newEmail) {
-  updateEmail(auth.currentUser, newEmail)
-    .then(console.log(`email updated`))
-    .catch((err) => {
-      console.log(err);
-    });
-};
-// updateemail("viralvudera@gmail.com");
+//credential prompting function
+const promptForCredentials = async function (newMail) {
+  const modal = document.querySelector(".credential-modal-container");
+  const pass = document.getElementById("pass-cred");
+  const submit = document.querySelector(".cred-submit");
+  const close = document.querySelector(".cred-close");
+  modal.classList.remove("hidden");
 
+  submit.addEventListener("click", function () {
+    if (!pass.value) {
+      alert(`credentials needed to do this operation`);
+      modal.classList.add("hidden");
+    } else if (pass.value) {
+      console.log(pass.value);
+      modal.classList.add("hidden");
+      usercredentials(pass.value, newMail);
+    }
+    modal.classList.add("hidden");
+  });
+
+  close.addEventListener("click", function () {
+    modal.classList.add("hidden");
+  });
+};
+
+const usercredentials = function (pass, newMail) {
+  const credential = EmailAuthProvider.credential(auth.currentUser.email, pass);
+  reauthenticateWithCredential(auth.currentUser, credential)
+    .then(() => {
+      console.log(`reauth successfull`);
+      verifyBeforeUpdateEmail(auth.currentUser, newMail).then(() => {
+        const updates = {};
+        updates["users/" + auth.currentUser.uid + "/" + "Email"] = newMail;
+        update(ref(db), updates).then(
+          (document.querySelector(".profile-message").textContent =
+            "verify your new email id")
+        );
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+//update email
+const updateMail = async function (newMail) {
+  // get user id
+  let message;
+  let holder;
+  const user = auth.currentUser;
+  const userId = user.email;
+  //compare those email with the user if not equal then update
+  holder = await get(child(ref(db), `users/`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      snapshot.forEach((child) => {
+        let mail = child.val().Email;
+        if (mail == newMail) {
+          message = `nothing to update`;
+          document.querySelector(".profile-message").textContent =
+            "Nothing to update";
+          return message;
+        } else {
+          message = `need`;
+          return message;
+        }
+      });
+    }
+    return message;
+  });
+
+  if (holder === "need") {
+    promptForCredentials(newMail);
+  }
+};
 //update password
 
 //profile
@@ -224,4 +293,10 @@ const createUser = async function (name, email, mobile, password) {
   return useradded;
 };
 
-export { createUser, registerUser, userSignInWithEmail, userSignout };
+export {
+  createUser,
+  registerUser,
+  userSignInWithEmail,
+  userSignout,
+  updateMail,
+};
