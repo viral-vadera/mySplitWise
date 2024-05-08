@@ -28,6 +28,7 @@ import {
   verifyBeforeUpdateEmail,
   reauthenticateWithCredential,
   EmailAuthProvider,
+  updatePassword,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -178,48 +179,6 @@ const getPassword = async function (uid) {
   return pass;
 };
 
-//credential prompting function
-const promptForCredentials = async function (newMail) {
-  const modal = document.querySelector(".credential-modal-container");
-  const pass = document.getElementById("pass-cred");
-  const submit = document.querySelector(".cred-submit");
-  const close = document.querySelector(".cred-close");
-  modal.classList.remove("hidden");
-
-  submit.addEventListener("click", function () {
-    if (!pass.value) {
-      alert(`credentials needed to do this operation`);
-      modal.classList.add("hidden");
-    } else if (pass.value) {
-      console.log(pass.value);
-      modal.classList.add("hidden");
-      usercredentials(pass.value, newMail);
-    }
-    modal.classList.add("hidden");
-  });
-
-  close.addEventListener("click", function () {
-    modal.classList.add("hidden");
-  });
-};
-
-const usercredentials = function (pass, newMail) {
-  const credential = EmailAuthProvider.credential(auth.currentUser.email, pass);
-  reauthenticateWithCredential(auth.currentUser, credential)
-    .then(() => {
-      console.log(`reauth successfull`);
-      verifyBeforeUpdateEmail(auth.currentUser, newMail).then(() => {
-        const updates = {};
-        updates["users/" + auth.currentUser.uid + "/" + "Email"] = newMail;
-        update(ref(db), updates).then(
-          (document.querySelector(".profile-message").textContent =
-            "verify your new email id")
-        );
-      });
-    })
-    .catch((err) => console.log(err));
-};
-
 //update email
 const updateMail = async function (newMail) {
   // get user id
@@ -250,7 +209,152 @@ const updateMail = async function (newMail) {
     promptForCredentials(newMail);
   }
 };
+//credential prompting function
+const promptForCredentials = async function (newMail) {
+  const modal = document.querySelector(".credential-modal-container");
+  const pass = document.getElementById("pass-cred");
+  const submit = document.querySelector(".cred-submit");
+  const close = document.querySelector(".cred-close");
+  modal.classList.remove("hidden");
+
+  submit.addEventListener("click", function () {
+    if (!pass.value) {
+      alert(`credentials needed to do this operation`);
+      modal.classList.add("hidden");
+    } else if (pass.value) {
+      console.log(pass.value);
+      modal.classList.add("hidden");
+      verifyAndUpdateEmail(pass.value, newMail);
+    }
+    modal.classList.add("hidden");
+  });
+
+  close.addEventListener("click", function () {
+    modal.classList.add("hidden");
+  });
+};
+const verifyAndUpdateEmail = function (pass, newMail) {
+  const credential = EmailAuthProvider.credential(auth.currentUser.email, pass);
+  reauthenticateWithCredential(auth.currentUser, credential)
+    .then(() => {
+      console.log(`reauth successfull`);
+      verifyBeforeUpdateEmail(auth.currentUser, newMail).then(() => {
+        const updates = {};
+        updates["users/" + auth.currentUser.uid + "/" + "Email"] = newMail;
+        update(ref(db), updates).then(
+          (document.querySelector(".profile-message").textContent =
+            "verify your new email id")
+        );
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+//update username
+const updateName = function (newName) {
+  if (!newName)
+    document.querySelector(
+      ".update-message"
+    ).textContent = `field can not be empty`;
+
+  get(child(ref(db), "users/" + auth.currentUser.uid + "/")).then(
+    (snapshot) => {
+      if (snapshot.exists()) {
+        snapshot.forEach((child) => {
+          if (snapshot.val().Name === newName) {
+            document.querySelector(
+              ".update-message"
+            ).textContent = `same as old name`;
+          } else {
+            const updates = {};
+            updates["users/" + auth.currentUser.uid + "/" + "Name"] = newName;
+            update(ref(db), updates).then(() => {
+              document.querySelector(
+                ".update-message"
+              ).textContent = `Name updated`;
+            });
+          }
+        });
+      }
+    }
+  );
+};
+
+//update mobile
+const updateMobile = function (newMobile) {
+  if (!newMobile)
+    document.querySelector(
+      ".update-message"
+    ).textContent = `field can not be empty`;
+
+  //
+  get(child(ref(db), `users/${auth.currentUser.uid}/`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      snapshot.forEach((child) => {
+        if (snapshot.val().child === newMobile) {
+          document.querySelector(
+            ".update-message"
+          ).textContent = `This is the old number`;
+        } else {
+          const updates = {};
+          updates["users/" + auth.currentUser.uid + "/" + "Mobile"] = newMobile;
+          update(ref(db), updates).then(() => {
+            document.querySelector(
+              ".update-message"
+            ).textContent = `Mobile updated`;
+          });
+        }
+      });
+    }
+  });
+};
+
+const reauthenticateAndUpdatePass = function (old, newpass) {
+  if (!auth.currentUser) {
+    alert(`your session has expired login again`);
+    userSignout();
+  }
+  const credential = EmailAuthProvider.credential(auth.currentUser.email, old);
+
+  reauthenticateWithCredential(auth.currentUser, credential)
+    .then(() => {
+      updatePassword(auth.currentUser, newpass).then(() => {
+        const updates = {};
+        updates["users/" + auth.currentUser.uid + "/" + "Password"] = newpass;
+        update(ref(db), updates).then(() => {
+          document.querySelector(
+            ".update-message"
+          ).textContent = ` password updated`;
+        });
+      });
+    })
+    .catch((error) => {
+      if (error.code === "auth/invalid-credential") {
+        document.querySelector(
+          ".update-message"
+        ).textContent = `password incorrect`;
+      }
+      console.log(error);
+    });
+};
 //update password
+const updatePasswordFn = function (old, newpass, newcnfpass) {
+  if (old === "" || newpass == "" || newcnfpass === "") {
+    document.querySelector(
+      ".update-message"
+    ).textContent = `field can not be empty`;
+  } else if (newpass !== newcnfpass) {
+    document.querySelector(
+      ".update-message"
+    ).textContent = ` match new password`;
+  } else if (old === newpass) {
+    document.querySelector(
+      ".update-message"
+    ).textContent = `can not set old password as new one`;
+  } else {
+    reauthenticateAndUpdatePass(old, newcnfpass);
+  }
+};
 
 //profile
 
@@ -299,4 +403,7 @@ export {
   userSignInWithEmail,
   userSignout,
   updateMail,
+  updateName,
+  updateMobile,
+  updatePasswordFn,
 };
