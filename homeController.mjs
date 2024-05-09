@@ -35,6 +35,17 @@ const editNewConfPassInp = document.getElementById(
 );
 const profileMessage = document.querySelector(".update-message");
 const profileMessageContainer = document.querySelector(".update-message");
+
+//displaying infromation after user login
+const displayUserInfo = function () {
+  if (localStorage.getItem("user")) {
+    let userdata = JSON.parse(localStorage.getItem("user"));
+    userDropdown.textContent = `${userdata.Name}`;
+  }
+};
+
+displayUserInfo();
+
 signOut.addEventListener("click", function (e) {
   e.preventDefault();
   userSignout();
@@ -55,9 +66,10 @@ profile.addEventListener("click", function (e) {
   profileModal.classList.remove("hidden");
   overlay.classList.remove("hidden");
   //populating the fields text content
-  usernameInp.setAttribute("placeholder", `username`);
-  emailInp.setAttribute("placeholder", `viralvadera@gmail.com`);
-  mobileInp.setAttribute("placeholder", "9408523060");
+  let userdata = JSON.parse(localStorage.getItem("user"));
+  usernameInp.setAttribute("placeholder", `${userdata.Name}`);
+  emailInp.setAttribute("placeholder", `${userdata.Email}`);
+  mobileInp.setAttribute("placeholder", `${userdata.Mobile}`);
   //disabiling the fields
 
   //overlay close mechanism

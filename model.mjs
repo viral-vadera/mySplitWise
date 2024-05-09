@@ -83,34 +83,40 @@ const checkIfUser = async function (email) {
     if (snapshot.exists()) {
       snapshot.forEach((child) => {
         let mail = child.val().Email;
-        if (mail == email) {
+
+        if (mail === email) {
           user = `isUser`;
-          return user;
-        } else {
-          user = `notUser`;
           return user;
         }
       });
+    } else {
+      user = `notUser`;
+      return user;
     }
   });
+
   return user;
 };
 
 //user sign in
 const userSignInWithEmail = async function (email, password) {
   if (!email && !password) return;
-
+  let user = true;
   checkIfUser(email).then((data) => {
     if (data === `isUser`) {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => {
           if (userCredentials.user.emailVerified === false) {
             alert("The email id is not verified please verify your email");
+            user = false;
+            return user;
           } else {
             document.querySelector(".loader").classList.add("hidden");
             document.querySelector(".overlay").classList.add("hidden");
             window.location.pathname = "/home.html";
             window.localStorage.setItem("state", "home");
+            user = true;
+            return user;
           }
         })
         .catch((error) => {
@@ -121,8 +127,27 @@ const userSignInWithEmail = async function (email, password) {
       alert(`you are not a user create an account `);
       document.querySelector(".loader").classList.add("hidden");
       document.querySelector(".overlay").classList.add("hidden");
+      user = false;
+      return user;
     }
   });
+  return user;
+};
+
+//showing user details after sign, return a object that need to be shown at login
+const ShowUserData = async function (email) {
+  // things needed username, email, mobile, friends, groups, expenses
+  let userObj;
+  let holder = await get(child(ref(db), `users/`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      snapshot.forEach((child) => {
+        if (child.val().Email === email) {
+          userObj = child.val();
+        }
+      });
+    }
+  });
+  return userObj;
 };
 
 //signout user
@@ -186,28 +211,43 @@ const updateMail = async function (newMail) {
   let holder;
   const user = auth.currentUser;
   const userId = user.email;
-  //compare those email with the user if not equal then update
-  holder = await get(child(ref(db), `users/`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      snapshot.forEach((child) => {
-        let mail = child.val().Email;
-        if (mail == newMail) {
-          message = `nothing to update`;
-          document.querySelector(".profile-message").textContent =
-            "Nothing to update";
+  let ifUser;
+  //check if alerady linked to an account
+  ifUser = await checkIfUser(newMail).then((user) => {
+    console.log(user);
+    if (user === "notUser") {
+      get(child(ref(db), `users/${user.uid}`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            let mail = snapshot.val().Email;
+            console.log(mail === newMail);
+            if (mail === newMail) {
+              message = `nothing to update`;
+              document.querySelector(".profile-message").textContent =
+                "Nothing to update";
+              return message;
+            } else {
+              message = `need`;
+              return message;
+            }
+          }
+
           return message;
-        } else {
-          message = `need`;
-          return message;
-        }
-      });
+        })
+        .then((msg) => {
+          console.log(mgs);
+          if (msg === "need") {
+            promptForCredentials(newMail);
+          }
+        });
+    } else {
+      document.querySelector(
+        ".update-message"
+      ).textContent = `This email is alerady linked to another account.`;
     }
-    return message;
   });
 
-  if (holder === "need") {
-    promptForCredentials(newMail);
-  }
+  //compare those email with the user if not equal then update
 };
 //credential prompting function
 const promptForCredentials = async function (newMail) {
@@ -241,10 +281,10 @@ const verifyAndUpdateEmail = function (pass, newMail) {
       verifyBeforeUpdateEmail(auth.currentUser, newMail).then(() => {
         const updates = {};
         updates["users/" + auth.currentUser.uid + "/" + "Email"] = newMail;
-        update(ref(db), updates).then(
-          (document.querySelector(".profile-message").textContent =
-            "verify your new email id")
-        );
+        update(ref(db), updates).then(() => {
+          document.querySelector(".profile-message").textContent =
+            "verify your new email id";
+        });
       });
     })
     .catch((err) => console.log(err));
@@ -406,4 +446,5 @@ export {
   updateName,
   updateMobile,
   updatePasswordFn,
+  ShowUserData,
 };

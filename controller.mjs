@@ -1,5 +1,5 @@
 // imports
-import { userSignInWithEmail } from "./model.mjs";
+import { userSignInWithEmail, ShowUserData } from "./model.mjs";
 
 const loginBtn = document.querySelector(".login");
 const loginId = document.querySelector("#user-name");
@@ -10,6 +10,7 @@ const signUPGG = document.querySelector(".signup-gg");
 const signupBtn = document.querySelector(".signup");
 const overlay = document.querySelector(".overlay");
 const spinner = document.querySelector(".loader");
+
 loginId.focus();
 
 // login id validation
@@ -73,10 +74,17 @@ loginBtn.addEventListener("click", function (e) {
   if (loginId.value === "" || password.value === "")
     alert("need credentials to login");
 
-  userSignInWithEmail(loginId.value, password.value);
+  userSignInWithEmail(loginId.value, password.value).then((user) => {
+    if (user === true) {
+      ShowUserData(loginId.value).then((user) => {
+        localStorage.setItem("user", JSON.stringify(user));
+      });
+    }
+  });
 });
 
 signupBtn.addEventListener("click", function (e) {
   e.preventDefault();
   window.location.pathname = "/signup.html";
+  localStorage.removeItem("user");
 });
