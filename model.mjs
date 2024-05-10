@@ -292,61 +292,65 @@ const verifyAndUpdateEmail = function (pass, newMail) {
 
 //update username
 const updateName = function (newName) {
-  if (!newName)
+  if (!newName) {
     document.querySelector(
       ".update-message"
     ).textContent = `field can not be empty`;
-
-  get(child(ref(db), "users/" + auth.currentUser.uid + "/")).then(
-    (snapshot) => {
-      if (snapshot.exists()) {
-        snapshot.forEach((child) => {
-          if (snapshot.val().Name === newName) {
-            document.querySelector(
-              ".update-message"
-            ).textContent = `same as old name`;
-          } else {
-            const updates = {};
-            updates["users/" + auth.currentUser.uid + "/" + "Name"] = newName;
-            update(ref(db), updates).then(() => {
+  } else {
+    get(child(ref(db), "users/" + auth.currentUser.uid + "/")).then(
+      (snapshot) => {
+        if (snapshot.exists()) {
+          snapshot.forEach((child) => {
+            if (snapshot.val().Name === newName) {
               document.querySelector(
                 ".update-message"
-              ).textContent = `Name updated`;
-            });
-          }
-        });
+              ).textContent = `same as old name`;
+            } else {
+              const updates = {};
+              updates["users/" + auth.currentUser.uid + "/" + "Name"] = newName;
+              update(ref(db), updates).then(() => {
+                document.querySelector(
+                  ".update-message"
+                ).textContent = `Name updated`;
+              });
+            }
+          });
+        }
       }
-    }
-  );
+    );
+  }
 };
 
 //update mobile
 const updateMobile = function (newMobile) {
-  if (!newMobile)
+  if (!newMobile) {
     document.querySelector(
       ".update-message"
     ).textContent = `field can not be empty`;
-
-  //
-  get(child(ref(db), `users/${auth.currentUser.uid}/`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      snapshot.forEach((child) => {
-        if (snapshot.val().child === newMobile) {
-          document.querySelector(
-            ".update-message"
-          ).textContent = `This is the old number`;
-        } else {
-          const updates = {};
-          updates["users/" + auth.currentUser.uid + "/" + "Mobile"] = newMobile;
-          update(ref(db), updates).then(() => {
+  } else {
+    get(child(ref(db), `users/${auth.currentUser.uid}/`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        snapshot.forEach((child) => {
+          if (snapshot.val().child === newMobile) {
             document.querySelector(
               ".update-message"
-            ).textContent = `Mobile updated`;
-          });
-        }
-      });
-    }
-  });
+            ).textContent = `This is the old number`;
+          } else {
+            const updates = {};
+            updates["users/" + auth.currentUser.uid + "/" + "Mobile"] =
+              newMobile;
+            update(ref(db), updates).then(() => {
+              document.querySelector(
+                ".update-message"
+              ).textContent = `Mobile updated`;
+            });
+          }
+        });
+      }
+    });
+  }
+
+  //
 };
 
 const reauthenticateAndUpdatePass = function (old, newpass) {
